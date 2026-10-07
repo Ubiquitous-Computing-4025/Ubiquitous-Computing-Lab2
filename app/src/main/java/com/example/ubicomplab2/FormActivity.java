@@ -30,7 +30,8 @@ public class FormActivity extends AppCompatActivity {
             String phone = phoneInput.getText().toString();
             String email = emailInput.getText().toString();
 
-            if (!name.matches("[a-zA-Z ]+")) { //Validation checks
+            //Validation checks
+            if (!name.matches("[a-zA-Z ]+")) {
                 nameInput.setError("Name must contain letters only");
                 return;
             }
@@ -56,7 +57,8 @@ public class FormActivity extends AppCompatActivity {
 
             //go from FromActivity to IntentActivity
             Intent intent = new Intent(FormActivity.this, IntentActivity.class);
-            startActivity(intent); //go from FromActivity to IntentActivity
+            intent.putExtra("name", name);
+            startActivity(intent);
         });
     }
 

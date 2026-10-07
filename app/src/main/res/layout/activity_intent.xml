@@ -12,7 +12,6 @@
         android:id="@+id/thankYouText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thank you"
         android:textSize="24sp" />
 
 
