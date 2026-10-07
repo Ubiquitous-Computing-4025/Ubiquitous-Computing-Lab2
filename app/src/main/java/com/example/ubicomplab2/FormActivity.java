@@ -1,5 +1,6 @@
 package com.example.ubicomplab2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,15 +35,18 @@ public class FormActivity extends AppCompatActivity {
                 return;
             }
 
+
             if (!phone.matches("[0-9]+")) {
                 phoneInput.setError("Telephone number must contain digits only");
                 return;
             }
 
+
             if (password.isEmpty()) {
                 passwordInput.setError("Password is required");
                 return;
             }
+
 
             //From Stack Overflow
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -50,10 +54,9 @@ public class FormActivity extends AppCompatActivity {
                 return;
             }
 
-            Toast.makeText(
-                    FormActivity.this,
-                    "Thank you " + name + ", your request is being processed",
-                    Toast.LENGTH_SHORT).show();
+            //go from FromActivity to IntentActivity
+            Intent intent = new Intent(FormActivity.this, IntentActivity.class);
+            startActivity(intent); //go from FromActivity to IntentActivity
         });
     }
 
