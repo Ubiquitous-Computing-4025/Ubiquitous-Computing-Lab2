@@ -1,5 +1,6 @@
 package com.example.ubicomplab2.question2;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -67,6 +68,13 @@ public class FormActivity2 extends AppCompatActivity {
             emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Account Verification");
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Your verification code is: " + verificationCode);
+
+            //Send the email
+            try {
+                startActivity(emailIntent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, "No email app found", Toast.LENGTH_SHORT).show();
+            }
 
             Toast.makeText(
                     FormActivity2.this,
