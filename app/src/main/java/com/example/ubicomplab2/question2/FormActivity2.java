@@ -1,5 +1,7 @@
 package com.example.ubicomplab2.question2;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,8 +56,13 @@ public class FormActivity2 extends AppCompatActivity {
                 return;
             }
 
+            //Generate a random int
             Random random = new Random();
             int verificationCode = 100000 + random.nextInt(900000);
+
+            //Implicit intent tells what to do but not where
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+            emailIntent.setData(Uri.parse("mailto:"));
 
             Toast.makeText(
                     FormActivity2.this,
