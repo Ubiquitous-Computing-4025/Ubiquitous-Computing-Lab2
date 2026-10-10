@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UbiCompLab2">
         <activity
+            android:name=".question2.FormActivity2"
+            android:exported="true" />
+        <activity
             android:name=".FormActivity"
             android:exported="true">
             <intent-filter>
