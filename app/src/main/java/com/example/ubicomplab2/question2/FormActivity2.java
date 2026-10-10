@@ -63,6 +63,10 @@ public class FormActivity2 extends AppCompatActivity {
             //Implicit intent tells what to do but not where
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
             emailIntent.setData(Uri.parse("mailto:"));
+            //An external email application receives the extras.
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Account Verification");
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "Your verification code is: " + verificationCode);
 
             Toast.makeText(
                     FormActivity2.this,
