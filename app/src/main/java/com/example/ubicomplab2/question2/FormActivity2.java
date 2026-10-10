@@ -70,7 +70,11 @@ public class FormActivity2 extends AppCompatActivity {
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Your verification code is: " + verificationCode);
 
             //Send the email
+            Intent verifyIntent = new Intent(this, ImplicitIntentActivity.class);
+            verifyIntent.putExtra("verificationCode", verificationCode);
+
             try {
+                startActivity(verifyIntent);
                 startActivity(emailIntent);
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(this, "No email app found", Toast.LENGTH_SHORT).show();

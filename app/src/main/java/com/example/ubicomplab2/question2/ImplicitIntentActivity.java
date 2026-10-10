@@ -1,12 +1,12 @@
 package com.example.ubicomplab2.question2;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.ubicomplab2.R;
 
@@ -17,10 +17,26 @@ public class ImplicitIntentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_implicit_intent);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        //Connections
+        EditText codeInput = findViewById(R.id.codeInput);
+        Button verifyButton = findViewById(R.id.verifyButton);
+
+        //Retrieve the generated code
+        int verificationCode = getIntent().getIntExtra("verificationCode", -1);
+
+        //Check the code that the user input
+        verifyButton.setOnClickListener(v -> {
+
+            String enteredCode = codeInput.getText().toString();
+
+            if (enteredCode.equals(String.valueOf(verificationCode))) {
+                Toast.makeText(this, "Account Verified!", Toast.LENGTH_LONG).show();
+            } else {
+                codeInput.setError("Incorrect verification code");
+            }
+
         });
+
     }
 }
